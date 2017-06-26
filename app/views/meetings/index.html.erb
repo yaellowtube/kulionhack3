@@ -1,0 +1,38 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center title" style="
+   font-family: 'Jeju Gothic', serif;">만남의 광장</h1>
+
+<div>
+<%= link_to 'New', new_meeting_path, class: 'btn btn-secondary' %>|
+<%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
+</div>
+
+  <% @meetings.each do |meeting| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail thumb-box">
+        <div class="text-center">
+          <h2><%= meeting.title %>
+            <% if meeting.category=="스터디" %>
+              <span class="badge-primary badge" style="background: #0275d8;"><%= meeting.category %></span>
+            <% elsif meeting.category=="밥약" %>
+              <span class="badge-danger badge" style="background: #d9534f;"><%= meeting.category %></span>
+            <% elsif meeting.category== "술약" %>
+              <span class="badge-success badge" style="background: #5cb85c;"><%= meeting.category %></span>
+            <% end %>
+          </h2>
+        </div>
+        <div class="text-center">
+          <p><%= meeting.body %></p>  
+        </div>
+        <div class="text-center" >
+          <%= link_to 'Show', meeting, class: 'btn btn-secondary' %>|
+          <%= link_to 'Edit', edit_meeting_path(meeting), class: 'btn btn-secondary'%>|
+          <%= link_to 'Destroy', meeting, class: 'btn btn-secondary', method: :delete, data: { confirm: 'Are you sure?' } %>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

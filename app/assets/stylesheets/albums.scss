@@ -1,0 +1,18 @@
+// Place all the styles related to the Albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+   font-family: 'Jeju Gothic', serif;;
+}
+
+.img-thumbnail2 {
+  border:0px;
+  border-radius: 0px!important;
+  height: 200px!important;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}

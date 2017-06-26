@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class=container>
+<h1 class="text-center">찍은 사진 올려줘</h1><br>
+
+<%= link_to 'New', new_album_path, class: 'btn btn-secondary' %>|
+<%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
+<br>
+
+<div class="row">
+  <div class="col-2"></div>
+  <div class="text-center col-8">
+  </div>
+  <div class="col-2"></div>
+</div>
+<br>
+
+<% @albums.each do |album| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail thumb-box text-center">
+    <div class="image">
+      <img src="<%= album.image %>", class="img-thumbnail2">
+    </div>
+    <div class="date">
+      <strong><%= album.created_at.strftime("%m/%d/%Y") %></strong>
+    </div>
+    <div class="title">
+      <%= album.title %>
+    </div>
+    <div class="button">
+    <%= link_to 'Show', album, class: 'btn btn-secondary' %>|
+    <%= link_to 'Edit', edit_album_path(album), class: 'btn btn-secondary'%>|
+    <%= link_to 'Destroy', album, class: 'btn btn-secondary', method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    </div>
+  </div>
+<% end %>
+

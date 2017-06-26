@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+
+    </div>
+    <div class="col-12 col-md-auto">
+   <p>
+  <strong>제목</strong>
+  <%= @album.title %>
+</p>
+
+<p>
+  <strong>내용</strong>
+  <%= @album.body %>
+</p>
+
+  <p>
+    <%= @album.created_at.strftime("%m/%d/%Y") %><br>
+    <% if @album.image.url %>
+       <img src="<%= @album.image.url %>" alt="dog"/>
+    <% else %>
+       <span>이미지없음</span>
+    <% end %>
+  </p>
+  
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', albums_path %>
+
+<%= render 'replies/reply', album: @album %>
+    </div>
+    <div class="col col-lg-2">
+    </div>
+  </div>

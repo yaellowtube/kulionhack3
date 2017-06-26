@@ -1,0 +1,38 @@
+<%= form_for(meeting) do |f| %>
+  <% if meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  
+  <div class="field radio-group" style="margin-top: 10px;">
+    <span style="background: #cce6ff;">
+    <%= f.label :category, '스터디', :value => '스터디' %>
+    <%= f.radio_button :category, '스터디', :checked => true%>
+    <%= f.label :category, '밥약', :value => '밥약' %>
+    <%= f.radio_button :category, '밥약'%>
+    <%= f.label :category, '술약', :value => '술약' %>
+    <%= f.radio_button :category, '술약'%>
+    </span>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" ,class: 'btn btn-secondary'%>
+  </div>
+<% end %>

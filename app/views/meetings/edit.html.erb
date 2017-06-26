@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="text-left">
+        <%= link_to 'Show', @meeting , class: 'btn btn-secondary'%> |
+        <%= link_to 'Back', meetings_path, class: 'btn btn-secondary' %>    
+  </div>
+    
+<h1>Edit</h1>
+
+<%= render 'form', meeting: @meeting %>
+
+</div>

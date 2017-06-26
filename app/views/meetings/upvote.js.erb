@@ -1,0 +1,6 @@
+<% if current_user.liked? @meeting %>
+ document.getElementsByClassName('like-btn')[0].className = "like-btn liked";
+<% else %>
+ document.getElementsByClassName('like-btn')[0].className = "like-btn";
+<% end %>
+document.getElementsByClassName('likes-count')[0].innerHTML="<%= @meeting.get_upvotes.size %>";

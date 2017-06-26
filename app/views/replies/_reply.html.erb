@@ -1,0 +1,28 @@
+
+<% @album.replies.each do |reply| %>
+<p>
+  <strong>이름</strong>
+  <%= reply.reply_user %>
+</p>
+
+<p>
+  <%= reply.body %>
+</p>
+<% end %>
+
+<p>
+  <strong>댓글</strong>
+</p>
+<%= form_for([@album, @album.replies.build]) do |f| %>
+  <p>
+     <%= f.label :reply_user %><br>
+     <%= f.text_field :reply_user %>
+  </p>
+  <p>
+     <%= f.label :body %><br>
+     <%= f.text_area :body %>
+  </p>
+  <p>
+     <% f.submit %>
+  </p>
+ <% end %>

@@ -1,0 +1,68 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+  <div class="row text-right">
+    <div class="col-9"></div>
+    <div class="col-2">
+      <%= link_to 'Edit', edit_meeting_path(@meeting) ,class: 'btn btn-secondary'%> | 
+      <%= link_to 'Back', meetings_path ,class: 'btn btn-secondary'%>      
+    </div>
+  </div>
+
+
+<h1 class="text-center">
+  <strong>Title:</strong>
+  <%= @meeting.title %>
+  <% if @meeting.category=="스터디" %>
+    <span class="badge badge-primary"><%= @meeting.category %></span>
+  <% elsif @meeting.category=="밥약" %>
+    <span class="badge badge-danger"><%= @meeting.category %></span>
+  <% elsif @meeting.category== "술약" %>
+    <span class="badge badge-success"><%= @meeting.category %></span>
+  <% end %>
+</h1>
+<div class="row">
+  <div class="text-center col-8" style="background: yellow; padding-top: 5px; padding-bottom: 5px;">
+    <%= @meeting.body %>
+  </div>
+</div>
+
+<h3 class="text-center">REPLIES</h3>
+
+<div class="row">
+  <div class="col-10" style="background: #f2f2f2; padding-top: 10px;">
+  <% @meeting.meeting_replies.each do |reply|%>
+    <p>
+      <strong>User:<%= reply.reply_user %></strong>
+    </p>
+    <p>
+      Reply:<%= reply.body %>
+    </p>
+  <% end %>
+  </div>
+</div>
+
+<div style="height: 30px;"></div>
+
+<%= form_for([@meeting, @meeting.meeting_replies.build]) do |f| %>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <p>
+        <%= f.label :reply_user %><br>
+        <%= f.text_field :reply_user %>
+      </p>
+      <p>
+        <%= f.label :body %><br>
+        <%= f.text_field :body %>
+      </p>
+      <p>
+        |<%= f.submit "Register",class: 'btn btn-secondary'%>|
+      </p>
+    </div>
+    <div class="col-1"></div>
+  </div>
+<% end %>
+
+
+</div>
